@@ -8,6 +8,7 @@ import time as t
 root = tk.Tk()
 
 # 알파벳 목록 및 삭제할 알파벳 추출, 배열
+
 alp = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 alp_txt = ''
 
@@ -27,7 +28,7 @@ def alp_st_all() : # 알파벳 배열 통합
     alp_array()
 
 def alphabet() :  # 삭제할 알파벳 추출 및 중복 제거
-    while True:
+    while True :
         r_1 = random.choice(alp)
         r_2 = random.choice(alp)
         r_3 = random.choice(alp)
@@ -37,8 +38,8 @@ def alphabet() :  # 삭제할 알파벳 추출 및 중복 제거
 def alp_array() : # 알파벳 배열
     global alp_txt
     alp_txt = ''
-    for i in alp:  # 알파벳 배열
-        if i != r_1 and i != r_2 and i != r_3:
+    for i in alp : 
+        if i != r_1 and i != r_2 and i != r_3 :
             alp_txt = alp_txt + i + ' '
 
 
@@ -147,6 +148,8 @@ def high() : # 난이도 어려움
     global time_left
     global lv
     global life
+    global left_alp
+    left_alp = 3
     lv = '어려움'
     time_left = 20
     life = 3
@@ -160,6 +163,8 @@ def nomal() : # 난이도 보통
     global time_left
     global lv
     global life
+    global left_alp
+    left_alp = 3
     lv = '보통'
     time_left = 30
     life = 4
@@ -173,6 +178,8 @@ def easy() : # 난이도 쉬움
     global time_left
     global lv
     global life
+    global left_alp
+    left_alp = 3
     lv = '쉬움'
     time_left = 40
     life = 6
@@ -435,6 +442,7 @@ def mov_re_lv() : # 난이도 창으로 돌아가기
     lv_txt_of()
 
 # 규칙 설명 텍스트
+
 def r_txt_game_on() : # 기본  게임 설명
     lab_rule_txt.config(text=r_game)
     lab_rule_txt.place(x=150, y=0)
@@ -644,7 +652,7 @@ lv = ''
 r_play = '기본모드\n난이도 별로 제한시간이 다르고\n난이도에는\n - 어려움[hard] : 제한시간 20초 / 목숨[life] : 2개\n -  보통[nomal] : 제한시간 30초 / 목숨[life] : 3개\n -   쉬움[easy]   : 제한시간 40초 / 목숨[life] : 5개\n가있다'
 r_tut = '연습모드\n제한시간을 설정할 수 있다\n(끝나도 결과화면으로 넘어가지 않는다)\n사라진 알파벳보기 버튼으로\n사라진 알파벳을 볼 수 있다\n숨기기 버튼으로 숨길 수 있다\n(3개를 맞춘 후 버튼을 다시 눌러 초기화 해야 한다)'
 r_inf = '무한모드\n기본시간 10초를 가지고 시작한다\n사라진 알파벳을 찾으면 제한시간에 변동이 생긴다\n - 맞출경우 : [제한시간] 3초 추가.\n - 틀릴경우 : [제한시간] 5초 감소.\n - 3개 다 찾을경우 : [제한시간] 5초 증가.\n(제한시간은 상한선이 없다)'
-r_game = '게임의 기본 설명\n사라진 알파벳 3개를 찾아야 하는 게임이다\n목숨은 틀리면 차감되고\n난이도에 따라 다르게 가지고 시작한다.\n(무한,연습모드에선 목숨이 없고 차감되지 않는다)\n게임 모드애는 일반, 무한, 연습이 있다\n(자새한건 각 모드의 설명에 나와있다)'
+r_game = '게임의 기본 설명\n사라진 알파벳 3개를 찾아야 하는 게임이다\n목숨은 틀리면 차감되고\n난이도에 따라 다르게 가지고 시작한다.\n(무한,연습모드에선 목숨이 없고 차감되지 않는다)\n게임 모드에는 일반, 무한, 연습이 있다\n(자새한건 각 모드의 설명에 나와있다)'
 
 # 프레임 (창)
 frame_main = tk.Frame(root, width=800, height=600, bg='gray80')
@@ -841,7 +849,6 @@ btn_show_alp.place(x=0, y=300)
 btn_main_re_tut = tk.Button(frame_tut, text='나가기', font=(n_font, 20), bg='gray95', relief='groove', command=level_window)
 btn_main_re_tut.pack()
 btn_main_re_tut.place(x=695, y=545)
-
 
 btn_start_timer = tk.Button(frame_tut, text="타이머 시작", font=(n_font, 10), bg='gray90' , relief='groove', command=start_timer)
 btn_start_timer.pack()
